@@ -9,7 +9,7 @@ let home_dir () =
 
 let history_file_name () =
   let homeDir = get_home_dir () in
-  match homeDir with Some dir -> Some (dir ^ "/.ocaml_history") | None -> None
+  match homeDir with Some dir -> Some (dir ^ "/.osh_history") | None -> None
 
 let add_to_history historyFile line =
   match historyFile with
@@ -25,10 +25,6 @@ let parseCommandAndArgs line =
 
 let runCommand cmd args =
   match cmd with
-  | "cd" -> (
-      match args with
-      | [] -> print_endline "cd: missing argument"
-      | dir :: _ -> chdir dir)
   | _ ->
       (try execvp cmd (Array.of_list args)
        with Unix_error (err, _, _) ->
