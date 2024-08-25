@@ -5,11 +5,11 @@
 (generate_opam_files true)
 
 (source
- (github username/reponame))
+ (github hallmason17/ocaml_mini_shell))
 
-(authors "Author Name")
+(authors "Mason Hall")
 
-(maintainers "Maintainer Name")
+(maintainers "Mason Hall")
 
 (license LICENSE)
 
@@ -17,10 +17,8 @@
 
 (package
  (name ocaml_mini_shell)
- (synopsis "A short synopsis")
- (description "A longer description")
- (depends ocaml dune)
- (tags
-  (topics "to describe" your project)))
+ (description "Mini shell to execute commands with args written in Ocaml")
+ (depends ocaml dune))
+
 
 ; See the complete stanza docs at https://dune.readthedocs.io/en/stable/reference/dune-project/index.html
