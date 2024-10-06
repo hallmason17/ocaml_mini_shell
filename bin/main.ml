@@ -61,12 +61,15 @@ let prompt_user () =
   let line = read_line () in
   let cmd, args = parseCommandAndArgs line in
   add_to_history (history_file_name ()) line;
-  if cmd = "exit" then exit 0;
-  match fork () with
-  | 0 -> runCommand cmd args
-  | _ ->
-      let _, status = wait () in
-      print_status "Program" status
+    match cmd with
+    | "exit" -> exit 0;
+    | "cd" -> chdir(List.nth args 1)
+    | _ ->
+      match fork () with
+      | 0 -> runCommand cmd args
+      | _ ->
+          let _, status = wait () in
+          print_status "Program" status
 
 let osh () =
   print_endline "Welcome to Osh!";
